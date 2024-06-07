@@ -1,12 +1,19 @@
 import React, { useState } from "react";
-import Full from "./components/Full";
+import Header from "./components/Header";
+import Router from './utils/Router'
 
 function App() {
   const [data, setData] = useState([]);
 
   return (
 
-    <Full data={data} setData={setData} />
+    <>
+    {/* <Header /> */}
+
+    <Router />
+    
+    </>
+
     
   );
 }

@@ -30,7 +30,7 @@ const TaskForm = ({ handleAddTask, reference }) => {
           <option value="Medium">Medium</option>
           <option value="High">High</option>
         </select>
-        <div className="flex justify-end gap-2">
+        <div className="flex justify-end gap-2">f
           <button
             type="button"
             className="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
