@@ -2,21 +2,24 @@ import React, { useRef, useState } from "react";
 import Card from "./Card";
 import { GoPlus } from "react-icons/go";
 import TaskForm from "./TaskForm";
+import { useAuth } from "../utils/AuthContext";
+import TryLoader from "./TryLoader";
 
 function Foreground({ data, setData }) {
   const ref = useRef(null);
+
+  const { loading } = useAuth();
 
   const [showForm, setShowForm] = useState(false);
 
   const handleAddTask = (task) => {
     setData([...data, task]);
     setShowForm(false);
-  };  
+  };
 
   const handleRemoveTask = (id) => {
     setData(() => data.filter((item, index) => index !== id));
   };
-
 
   return (
     <>
@@ -26,7 +29,13 @@ function Foreground({ data, setData }) {
           className="fixed top-0 left-0 w-full h-full text-zinc-300 flex flex-wrap gap-5 p-5"
         >
           {data.map((item, index) => (
-            <Card key={index} index={index} handleRemoveTask={handleRemoveTask} reference={ref} data={item} />
+            <Card
+              key={index}
+              index={index}
+              handleRemoveTask={handleRemoveTask}
+              reference={ref}
+              data={item}
+            />
           ))}
         </div>
 
@@ -39,9 +48,14 @@ function Foreground({ data, setData }) {
 
         {showForm && (
           <div className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[180%]">
-            <TaskForm reference={ref} handleAddTask={handleAddTask} />
+            <TaskForm
+              setShowForm={setShowForm}
+              reference={ref}
+              handleAddTask={handleAddTask}
+            />
           </div>
         )}
+
       </div>
     </>
   );

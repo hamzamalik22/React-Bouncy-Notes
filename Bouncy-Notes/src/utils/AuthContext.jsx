@@ -1,6 +1,7 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { account } from "../appwrite/appwriteConfig";
-import {ID} from 'appwrite'
+import { ID } from "appwrite";
+import TryLoader from "../components/TryLoader";
 
 const AuthContext = createContext();
 
@@ -10,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(false);
 
   useEffect(() => {
-    checkUserStatus()
+    checkUserStatus();
   }, []);
 
   const loginUser = async (userInfo) => {
@@ -20,12 +21,12 @@ export const AuthProvider = ({ children }) => {
       let response = await account.createEmailPasswordSession(
         userInfo.email,
         userInfo.password
-      )
+      );
 
-      let accountDetails = await account.get()
+      let accountDetails = await account.get();
 
       console.log("Account Details :", accountDetails);
-      setUser(accountDetails)
+      setUser(accountDetails);
     } catch (error) {
       console.error(error);
     }
@@ -34,50 +35,44 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logoutUser = () => {
-    account.deleteSession('current');
-    setUser(null)
+    account.deleteSession("current");
+    setUser(null);
   };
 
   const registerUser = async (userInfo) => {
     setLoading(true);
 
     try {
-        
       let response = await account.create(
         ID.unique(),
         userInfo.email,
         userInfo.password1,
-        userInfo.name,
-      )
+        userInfo.name
+      );
 
       await account.createEmailPasswordSession(
         userInfo.email,
         userInfo.password1
-      )
+      );
 
-      let accountDetails = await account.get()
-      setUser(accountDetails)
-
+      let accountDetails = await account.get();
+      setUser(accountDetails);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
 
-
     setLoading(false);
-
-
   };
 
   const checkUserStatus = async () => {
     try {
-        let accountDetails = await account.get()
-        setUser(accountDetails)
-    } catch (error) {
-        
-    }
+      await new Promise((resolve) => setTimeout(resolve, 300));
+
+      let accountDetails = await account.get();
+      setUser(accountDetails);
+    } catch (error) {}
 
     setLoading(false);
-
   };
 
   const contextData = {
@@ -89,7 +84,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={contextData}>
-      {loading ? <p>Loading...</p> : children}
+      {loading ? <TryLoader /> : children}
     </AuthContext.Provider>
   );
 };

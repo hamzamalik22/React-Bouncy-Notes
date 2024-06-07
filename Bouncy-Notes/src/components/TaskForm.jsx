@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 
-const TaskForm = ({ handleAddTask, reference }) => {
+const TaskForm = ({ handleAddTask, reference, setShowForm }) => {
   const { register, handleSubmit, reset } = useForm();
 
   const handleForm = (data) => {
@@ -11,7 +11,13 @@ const TaskForm = ({ handleAddTask, reference }) => {
   };
 
   return (
-    <motion.div drag whileDrag={{ scale: 1.1 }} dragElastic={2} dragConstraints={reference} className="w-80 p-4 rounded-lg shadow-lg bg-opacity-30 bg-gray-800 backdrop-filter backdrop-blur-lg">
+    <motion.div
+      drag
+      whileDrag={{ scale: 1.1 }}
+      dragElastic={2}
+      dragConstraints={reference}
+      className="w-80 p-4 rounded-lg shadow-lg bg-opacity-30 bg-gray-800 backdrop-filter backdrop-blur-lg"
+    >
       <form className="flex flex-col gap-4" onSubmit={handleSubmit(handleForm)}>
         <h2 className="text-lg font-semibold text-white">Add New Task</h2>
         <input
@@ -30,11 +36,11 @@ const TaskForm = ({ handleAddTask, reference }) => {
           <option value="Medium">Medium</option>
           <option value="High">High</option>
         </select>
-        <div className="flex justify-end gap-2">f
+        <div className="flex justify-end gap-2">
           <button
             type="button"
             className="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
-            onClick={() => handleAddTask(false)} // Hide form on cancel
+            onClick={() => setShowForm(false)} // Hide form on cancel
           >
             Cancel
           </button>

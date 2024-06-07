@@ -51,7 +51,7 @@ function Card({ data, reference, handleRemoveTask, index }) {
                 >
                   Delete
                 </button>
-                <button className="px-4 py-2 bg-gray-300 bg-opacity-70 text-gray-700 rounded hover:bg-opacity-100">
+                <button onClick={() => setShowForm(false)} className="px-4 py-2 bg-gray-300 bg-opacity-70 text-gray-700 rounded hover:bg-opacity-100">
                   Cancel
                 </button>
               </div>
