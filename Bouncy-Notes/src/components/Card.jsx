@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
-import { IoIosCheckmarkCircle } from "react-icons/io";
 import { motion } from "framer-motion";
 
-function Card({ data, reference, handleRemoveTask, index }) {
+function Card({ data, reference, handleRemoveTask, id }) {
   const [showForm, setShowForm] = useState(false);
 
   return (
@@ -35,7 +34,13 @@ function Card({ data, reference, handleRemoveTask, index }) {
       </motion.div>
 
       {showForm && (
-        <motion.div drag whileDrag={{ scale: 1.1 }} dragElastic={2} dragConstraints={reference} className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[180%] bg-red">
+        <motion.div
+          drag
+          whileDrag={{ scale: 1.1 }}
+          dragElastic={2}
+          dragConstraints={reference}
+          className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[180%] w-72 z-50"
+        >
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
             <div className="bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-lg shadow-lg text-center">
               <h2 className="text-lg font-semibold mb-4 text-white">
@@ -46,12 +51,18 @@ function Card({ data, reference, handleRemoveTask, index }) {
               </p>
               <div className="flex justify-center gap-4">
                 <button
-                  onClick={() => handleRemoveTask(index)}
+                  onClick={() => {
+                    handleRemoveTask(id);
+                    setShowForm(false);
+                  }}
                   className="px-4 py-2 bg-red-500 bg-opacity-70 text-white rounded hover:bg-opacity-100"
                 >
                   Delete
                 </button>
-                <button onClick={() => setShowForm(false)} className="px-4 py-2 bg-gray-300 bg-opacity-70 text-gray-700 rounded hover:bg-opacity-100">
+                <button
+                  onClick={() => setShowForm(false)}
+                  className="px-4 py-2 bg-gray-300 bg-opacity-70 text-gray-700 rounded hover:bg-opacity-100"
+                >
                   Cancel
                 </button>
               </div>

@@ -1,13 +1,24 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
+import db from "../appwrite/appwriteDatabase";
+import { useAuth } from '../utils/AuthContext';
 
 const TaskForm = ({ handleAddTask, reference, setShowForm }) => {
   const { register, handleSubmit, reset } = useForm();
 
-  const handleForm = (data) => {
-    handleAddTask(data);
-    reset();
+  const { user } = useAuth();
+
+  const handleForm = async (data) => {
+    try {
+      setShowForm(false);
+      const taskData = {...data, userId : user.$id};
+      const response = await db.Task.create(taskData);
+      handleAddTask(response);
+      reset();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -16,7 +27,7 @@ const TaskForm = ({ handleAddTask, reference, setShowForm }) => {
       whileDrag={{ scale: 1.1 }}
       dragElastic={2}
       dragConstraints={reference}
-      className="w-80 p-4 rounded-lg shadow-lg bg-opacity-30 bg-gray-800 backdrop-filter backdrop-blur-lg"
+      className="z-50 w-80 p-4 rounded-lg shadow-lg bg-opacity-30 bg-gray-800 backdrop-filter backdrop-blur-lg"
     >
       <form className="flex flex-col gap-4" onSubmit={handleSubmit(handleForm)}>
         <h2 className="text-lg font-semibold text-white">Add New Task</h2>

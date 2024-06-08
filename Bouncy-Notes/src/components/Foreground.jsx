@@ -1,37 +1,65 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Card from "./Card";
 import { GoPlus } from "react-icons/go";
 import TaskForm from "./TaskForm";
+import db from "../appwrite/appwriteDatabase";
+import { Query } from "appwrite";
 import { useAuth } from "../utils/AuthContext";
-import TryLoader from "./TryLoader";
+import DropdownMenu from "./DropdownMenu";
 
-function Foreground({ data, setData }) {
+function Foreground() {
+  const [data, setData] = useState([]);
+
+  const { user } = useAuth();
+
+  useEffect(() => {
+    init();
+  }, [user]);
+
+  const init = async () => {
+    const response = await db.Task.list([
+      Query.equal("userId", user.$id),
+      Query.orderDesc("$createdAt"),
+    ]);
+
+    setData(response.documents);
+  };
+
   const ref = useRef(null);
-
-  const { loading } = useAuth();
 
   const [showForm, setShowForm] = useState(false);
 
-  const handleAddTask = (task) => {
-    setData([...data, task]);
+  const handleAddTask = (response) => {
+    setData((prev) => [...prev, response]);
     setShowForm(false);
   };
 
-  const handleRemoveTask = (id) => {
-    setData(() => data.filter((item, index) => index !== id));
+  const handleRemoveTask = async (id) => {
+    try {
+      await db.Task.delete(id);
+      setData((prev) => prev.filter((item) => item.$id !== id));
+    } catch (error) {
+      console.error("Failed to delete task:", error);
+    }
   };
 
   return (
     <>
+      <div
+        className="absolute right-[-1%] top-[-3%] rounded-full  bg-white flex justify-center items-center text-black my-8 mx-8 cursor-pointer z-10"
+      >
+        <DropdownMenu />
+      </div>
+
       <div className="relative">
         <div
           ref={ref}
           className="fixed top-0 left-0 w-full h-full text-zinc-300 flex flex-wrap gap-5 p-5"
         >
-          {data.map((item, index) => (
+          {data.map((item) => (
             <Card
-              key={index}
-              index={index}
+              key={item.$id}
+              id={item.$id}
               handleRemoveTask={handleRemoveTask}
               reference={ref}
               data={item}
@@ -47,7 +75,7 @@ function Foreground({ data, setData }) {
         </div>
 
         {showForm && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[180%]">
+          <div className="z-50 absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[180%]">
             <TaskForm
               setShowForm={setShowForm}
               reference={ref}
@@ -55,7 +83,6 @@ function Foreground({ data, setData }) {
             />
           </div>
         )}
-
       </div>
     </>
   );

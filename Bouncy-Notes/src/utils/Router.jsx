@@ -12,9 +12,8 @@ function Router() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
+        <Route path="/" element={<Home />} />
         <Route element={<PrivateRoutes />}>
-          <Route path="/" element={<Home />} />
           <Route path="/bouncy-notes" element={<Full />} />
         </Route>
       </Routes>
