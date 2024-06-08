@@ -25,7 +25,7 @@ const DropdownMenu = () => {
         <div className="absolute top-16 right-4 w-40 bg-white rounded shadow-lg z-20">
           <ul className="flex flex-col p-2">
             <li>
-                <Link className='text flex justify-center items-center'><FaUser />&nbsp; {user.name}</Link>
+                <Link className='text flex justify-center items-center border-2 rounded'><FaUser />&nbsp; {user.name}</Link>
             </li>
             <li>
               <Link to="/" className="block px-4 py-2 text-center hover:bg-gray-200">Home</Link>
@@ -33,7 +33,7 @@ const DropdownMenu = () => {
             <li>
               <button
                 onClick={logoutUser}
-                className="block w-full text-left px-4 py-2 text-center hover:bg-gray-200"
+                className="block w-full px-4 py-2 text-center hover:bg-gray-200"
               >
                 Logout
               </button>

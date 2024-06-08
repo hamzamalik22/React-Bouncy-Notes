@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Header from "../components/Header";
 import { useAuth } from "../utils/AuthContext";
 import { useForm } from "react-hook-form";
+import Navbar from "../components/Navbar";
 
 
 const Login = () => {
@@ -35,7 +35,8 @@ const Login = () => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
+      <Navbar />
       <div className="container">
         <div className="login-register-container">
           <form onSubmit={handleSubmit(handleForm)}>

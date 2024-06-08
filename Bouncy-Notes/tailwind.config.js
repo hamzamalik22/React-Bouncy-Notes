@@ -5,7 +5,17 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'oleo': ['"Oleo Script"', 'cursive'],
+      },
+      fontSize: {
+        'logo': '48px',
+      },
+      colors: {
+        'custom-black': '#000000',
+      }
+    },
   },
   plugins: [],
 }

@@ -1,18 +1,14 @@
 import React from "react";
-import Header from "../components/Header";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
 
 const Home = () => {
   return (
     <>
-      <Header />
-      <div className="container">
-        <h1>Welcome to my website!</h1>
+      <Navbar />
 
-        <p>
-          This page should be protected by a PrivateRoutes component for
-          authenticated users
-        </p>
-      </div>
+      <Hero />
+
     </>
   );
 };
