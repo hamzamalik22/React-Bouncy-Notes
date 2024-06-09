@@ -10,11 +10,8 @@ export default {
         'oleo': ['"Oleo Script"', 'cursive'],
       },
       fontSize: {
-        'logo': '48px',
+        'logo': '40px',
       },
-      colors: {
-        'custom-black': '#000000',
-      }
     },
   },
   plugins: [],
