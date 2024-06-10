@@ -13,7 +13,7 @@ function TryLoader() {
           size={100}
         />
       </div>
-      <h1 className="text-5xl font-semibold tracking-tighter text-zinc-500 absolute left-1/2 -translate-x-[50%] bottom-[20%] -translate-y-[100%] ">Bouncy Notes</h1>
+      <h1 className="text-2xl md:text-5xl font-semibold tracking-tighter text-zinc-500 absolute left-1/2 -translate-x-[50%] bottom-[20%] -translate-y-[100%] ">Bouncy Notes</h1>
     </>
   );
 }

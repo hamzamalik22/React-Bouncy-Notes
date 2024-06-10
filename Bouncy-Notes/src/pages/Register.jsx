@@ -11,7 +11,7 @@ const Register = () => {
 
   useEffect(() => {
     if (user) {
-      navigate("/");
+      navigate("/bouncy-notes");
     }
   }, []);
 
