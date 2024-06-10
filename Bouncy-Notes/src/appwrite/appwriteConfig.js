@@ -1,3 +1,6 @@
+// Appwrite Authentication template by Denis Ivy 
+// Used
+
 import conf from "../conf/conf.js";
 import { Client, Account, Databases } from "appwrite";
 

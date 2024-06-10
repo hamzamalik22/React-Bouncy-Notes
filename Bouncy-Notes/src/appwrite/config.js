@@ -1,3 +1,6 @@
+// Template by Hitesh Ch. 
+// Not Used
+
 import conf from "../conf/conf.js";
 import { Client, Account, ID, Databases, Storage, Query } from "appwrite";
 

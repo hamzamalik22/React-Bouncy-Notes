@@ -4,67 +4,57 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <>
-      <footer class="w-full py-14">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="max-w-3xl mx-auto">
-            <a href="#" class="flex justify-center ">
+      <footer className="w-full py-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto">
+            <li href="#" className="flex justify-center ">
               <Link
                 to="/"
                 className="text-logo md:pl-10 font-oleo font-black no-underline text-black"
               >
                 Bouncy Notes
               </Link>
-            </a>
-            <ul class="text-lg flex items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-16 mb-10 border-b border-gray-200">
+            </li>
+            <ul className="text-lg flex items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-16 mb-10 border-b border-gray-200">
               <li>
-                <a href="#" class="text-gray-800 hover:text-gray-900">
-                  Pagedone
-                </a>
+                <Link to="/" className="text-gray-800 hover:text-gray-900">
+                  Home
+                </Link>
               </li>
               <li>
-                <a href="#" class=" text-gray-800 hover:text-gray-900">
-                  Products
-                </a>
+                <Link to="/bouncy-notes" className=" text-gray-800 hover:text-gray-900">
+                  Bouncy Notes
+                </Link>
               </li>
               <li>
-                <a href="#" class=" text-gray-800 hover:text-gray-900">
-                  Resources
-                </a>
+                <Link to="/register" className=" text-gray-800 hover:text-gray-900">
+                  Register
+                </Link>
               </li>
               <li>
-                <a href="#" class=" text-gray-800 hover:text-gray-900">
-                  Blogs
-                </a>
+                <Link to="/login" className=" text-gray-800 hover:text-gray-900">
+                  Login
+                </Link>
               </li>
               <li>
-                <a href="#" class=" text-gray-800 hover:text-gray-900">
-                  Support
-                </a>
+                <Link to="/about" className=" text-gray-800 hover:text-gray-900">
+                  About us
+                </Link>
               </li>
             </ul>
-            <div class="flex space-x-10 justify-center items-center mb-14">
-              <a
-                href="#"
-                class="block  text-gray-900 transition-all duration-500 hover:text-indigo-600 "
+            <div className="flex space-x-10 justify-center items-center mb-14">
+              <a target="_blank"
+                href="https://www.linkedin.com/in/hamzamalik22"
+                className="block  text-gray-900 transition-all duration-500 hover:text-indigo-600 "
               >
-                <svg
-                  class="w-[1.688rem] h-[1.688rem]"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                >
-                  <path
-                    d="M11.3214 8.93666L16.4919 3.05566H15.2667L10.7772 8.16205L7.1914 3.05566H3.05566L8.47803 10.7774L3.05566 16.9446H4.28097L9.022 11.552L12.8088 16.9446H16.9446L11.3211 8.93666H11.3214ZM9.64322 10.8455L9.09382 10.0765L4.72246 3.95821H6.60445L10.1322 8.8959L10.6816 9.66481L15.2672 16.083H13.3852L9.64322 10.8458V10.8455Z"
-                    fill="currentColor"
-                  />
-                </svg>
+               <svg xmlns="http://www.w3.org/2000/svg" width="1.688rem" height="1.688rem" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
               </a>
-              <a
-                href="#"
-                class="block  text-gray-900 transition-all duration-500 hover:text-indigo-600 "
+              <a target="_blank"
+                href="https://www.instagram.com/mayaxhamzamalik"
+                className="block  text-gray-900 transition-all duration-500 hover:text-indigo-600 "
               >
                 <svg
-                  class="w-[1.688rem] h-[1.688rem] "
+                  className="w-[1.688rem] h-[1.688rem] "
                   viewBox="0 0 29 29"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -77,10 +67,10 @@ function Footer() {
               </a>
               <a
                 href="#"
-                class="block  text-gray-900 transition-all duration-500 hover:text-indigo-600 "
+                className="block  text-gray-900 transition-all duration-500 hover:text-indigo-600 "
               >
                 <svg
-                  class="w-[0.938rem] h-[1.625rem]"
+                  className="w-[0.938rem] h-[1.625rem]"
                   viewBox="0 0 15 26"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -93,24 +83,24 @@ function Footer() {
               </a>
               <a
                 href="#"
-                class="block  text-gray-900 transition-all duration-500 hover:text-indigo-600 "
+                className="block  text-gray-900 transition-all duration-500 hover:text-indigo-600 "
               >
                 <svg
-                  class="w-[1.875rem] h-[1.375rem]"
+                  className="w-[1.875rem] h-[1.375rem]"
                   viewBox="0 0 30 22"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M26.3106 1.27838C27.5782 1.62071 28.5745 2.61957 28.9113 3.88573C29.524 6.18356 29.524 10.9809 29.524 10.9809C29.524 10.9809 29.524 15.7782 28.9113 18.076C28.5698 19.3469 27.5735 20.3457 26.3106 20.6834C24.0186 21.2977 14.8226 21.2977 14.8226 21.2977C14.8226 21.2977 5.63122 21.2977 3.33456 20.6834C2.06695 20.3411 1.07063 19.3422 0.73385 18.076C0.121094 15.7782 0.121094 10.9809 0.121094 10.9809C0.121094 10.9809 0.121094 6.18356 0.73385 3.88573C1.07531 2.61488 2.07162 1.61602 3.33456 1.27838C5.63122 0.664062 14.8226 0.664062 14.8226 0.664062C14.8226 0.664062 24.0186 0.664062 26.3106 1.27838ZM19.5234 10.9809L11.885 15.403V6.55872L19.5234 10.9809Z"
                     fill="currentColor"
                   />
                 </svg>
               </a>
             </div>
-            <span class="text-lg text-gray-500 text-center block">
+            <span className="text-lg text-gray-500 text-center block">
               ©<Link to="/"> Bouncy Notes</Link> 2024, All rights reserved.
             </span>
           </div>

@@ -5,6 +5,7 @@ import Register from "../pages/Register";
 import Home from "../pages/Home";
 import Full from "../pages/Full";
 import PrivateRoutes from "./PrivateRoutes";
+import About from "../pages/About";
 
 function Router() {
   return (
@@ -12,6 +13,7 @@ function Router() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<About />} />
         <Route path="/" element={<Home />} />
         <Route element={<PrivateRoutes />}>
           <Route path="/bouncy-notes" element={<Full />} />

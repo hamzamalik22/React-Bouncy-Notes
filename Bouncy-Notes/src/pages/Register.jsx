@@ -1,67 +1,56 @@
-import React ,{ useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Header from "../components/Header";
 import { useAuth } from "../utils/AuthContext";
 import { useForm } from "react-hook-form";
-
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 const Register = () => {
-
   const navigate = useNavigate();
   const { user, registerUser } = useAuth();
 
-  useEffect(()=>{
-    if(user){
-      navigate('/')
+  useEffect(() => {
+    if (user) {
+      navigate("/");
     }
-  }, [])
+  }, []);
 
-  const {register, handleSubmit} = useForm();
+  const { register, handleSubmit } = useForm();
 
-  const handleForm = (data)=>{
-    console.log(data);
-
+  const handleForm = (data) => {
     const { name, email, password1, password2 } = data;
 
-    console.log(name);
-    console.log(email);
-    console.log(password1);
-    console.log(password2);
+    // console.log(name);
+    // console.log(email);
+    // console.log(password1);
+    // console.log(password2);
 
-    // let email = data.email;
-    // let password = data.password;
-    // let password = data.password;
-    // let password = data.password;
-
-    if(password1 !== password2){
-      alert("Passwords don't match..")
-      return
+    if (password1 !== password2) {
+      alert("Passwords don't match..");
+      return;
     }
-
 
     let userInfo = {
       name,
       email,
       password1,
       password2,
-    }
+    };
 
     registerUser(userInfo);
-
-  }
-
-
-
+  };
 
   return (
     <>
-      <Header />
+      <Navbar />
       <div className="container">
         <div className="login-register-container">
           <form onSubmit={handleSubmit(handleForm)}>
             <div className="form-field-wrapper">
               <label>Name:</label>
-              <input {...register('name')}
+              <input
+                className="border"
+                {...register("name")}
                 required
                 type="text"
                 name="name"
@@ -71,7 +60,9 @@ const Register = () => {
 
             <div className="form-field-wrapper">
               <label>Email:</label>
-              <input {...register('email')}
+              <input
+                className="border"
+                {...register("email")}
                 required
                 type="email"
                 name="email"
@@ -81,7 +72,9 @@ const Register = () => {
 
             <div className="form-field-wrapper">
               <label>Password:</label>
-              <input {...register('password1')}
+              <input
+                className="border"
+                {...register("password1")}
                 type="password"
                 name="password1"
                 placeholder="Enter password..."
@@ -90,7 +83,9 @@ const Register = () => {
 
             <div className="form-field-wrapper">
               <label>Confirm Password:</label>
-              <input {...register('password2')}
+              <input
+                className="border"
+                {...register("password2")}
                 type="password"
                 name="password2"
                 placeholder="Confirm password..."
@@ -103,10 +98,15 @@ const Register = () => {
           </form>
 
           <p>
-            Already have an account? <Link to="/login">Login</Link>
+            Already have an account?{" "}
+            <Link to="/login" className="hover:underline">
+              Login
+            </Link>
           </p>
         </div>
       </div>
+      <hr />
+      <Footer />
     </>
   );
 };

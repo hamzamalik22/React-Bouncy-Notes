@@ -3,46 +3,43 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
 import { useForm } from "react-hook-form";
 import Navbar from "../components/Navbar";
-
+import Footer from "../components/Footer";
 
 const Login = () => {
   const navigate = useNavigate();
   const { user, loginUser } = useAuth();
 
-  useEffect(()=>{
-    if(user){
-      navigate('/bouncy-notes')
+  useEffect(() => {
+    if (user) {
+      navigate("/bouncy-notes");
     }
-  }, [])
+  }, []);
 
-  const {register, handleSubmit} = useForm();
+  const { register, handleSubmit } = useForm();
 
-  const handleForm = (data)=>{
-    console.log(data.email);
-    console.log(data.password);
-
+  const handleForm = (data) => {
     let email = data.email;
     let password = data.password;
 
     let userInfo = {
       email,
-      password
-    }
+      password,
+    };
 
     loginUser(userInfo);
-
-  }
+  };
 
   return (
     <>
-      {/* <Header /> */}
       <Navbar />
       <div className="container">
         <div className="login-register-container">
           <form onSubmit={handleSubmit(handleForm)}>
             <div className="form-field-wrapper">
               <label>Email:</label>
-              <input {...register('email')}
+              <input
+                className="border"
+                {...register("email")}
                 required
                 type="email"
                 name="email"
@@ -52,7 +49,9 @@ const Login = () => {
 
             <div className="form-field-wrapper">
               <label>Password:</label>
-              <input {...register('password')}
+              <input
+                className="border"
+                {...register("password")}
                 type="password"
                 name="password"
                 placeholder="Enter password..."
@@ -65,10 +64,15 @@ const Login = () => {
           </form>
 
           <p>
-            Don't have an account? <Link to="/register">Register</Link>
+            Don't have an account?{" "}
+            <Link to="/register" className="hover:underline">
+              Register
+            </Link>
           </p>
         </div>
       </div>
+      <hr />
+      <Footer />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Background from "../components/Background";
 import Foreground from "../components/Foreground";
 
