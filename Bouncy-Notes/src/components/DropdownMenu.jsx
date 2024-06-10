@@ -17,12 +17,12 @@ const DropdownMenu = () => {
     <div className="absolute">
       <div
         onClick={toggleMenu}
-        className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white flex justify-center items-center text-black cursor-pointer z-10"
+        className="absolute top-8 right-2 md:top-4 md:right-4 w-10 h-10 rounded-full bg-white flex justify-center items-center text-black cursor-pointer z-10"
       >
         <VscLayoutMenubar size='1.2em' />
       </div>
       {showMenu && (
-        <div className="absolute top-16 right-4 w-40 bg-white rounded shadow-lg z-20">
+        <div className="absolute top-20 right-4 w-32 md:w-40 md:top-16 bg-white rounded shadow-lg z-20">
           <ul className="flex flex-col p-2">
             <li>
                 <Link className='text flex justify-center items-center border-2 rounded'><FaUser />&nbsp; {user.name}</Link>
